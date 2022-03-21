@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Онлайн генератор QR кодов</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="title">Создать QR код</h1>
+        <div class="box">
+            <div class="box__title">Параметры QR кода</div>
+            <div class="fields">
+                <div class="fields__select">
+                    <div class="fields__type">Выберите тип QR кода</div>
+                    <div class="fields__btn">
+                        <img src="/icons/up-arrow.png" alt="">
+                    </div>
+                    <div class="fields__drop" id="options_1">
+                        <ul class="fields__list">
+                            <li data-option="1">Простой текст</li>
+                            <li data-option="2">Ссылка</li>
+                            <li data-option="3">Телефон</li>
+                            <li data-option="4">Электронная почта</li>
+                            <li data-option="5">WiFi</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="fields__field" data-qr="text" data-field="1">
+                    <textarea placeholder="Введите текст"></textarea>
+                </div>
+                <div class="fields__field" data-qr="url" data-field="2">
+                    <input type="text" placeholder="Введите ссылку">
+                </div>
+                <div class="fields__field" data-qr="tel" data-field="3">
+                    <input type="text" placeholder="Введите телефон">
+                </div>
+                <div class="fields__field" data-qr="email" data-field="4">
+                    <input type="text" placeholder="Введите эл. почту">
+                </div>
+                <div class="fields__field" data-field="5">
+                    <div class="fields">
+                        <div class="fields__select">
+                            <div class="fields__type">тип шифрования</div>
+                            <div class="fields__btn">
+                                <img src="/icons/up-arrow.png" alt="">
+                            </div>
+                            <div class="fields__drop" id="options_2">
+                                <ul class="fields__list">
+                                    <li data-option="6">без пароля</li>
+                                    <li data-option="7">WEP</li>
+                                    <li data-option="8">WPA/WPA2</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="fields__field" data-qr="wifi" data-field="6">
+                            <input name="wifiName" type="text" placeholder="Имя сети (SSID)">
+                            <input name="encryption" value="nopass" type="hidden">
+                        </div>
+                        <div class="fields__field" data-qr="wifi" data-field="7">
+                            <input name="wifiName" type="text" placeholder="Имя сети (SSID)">
+                            <input name="password" type="text" placeholder="Пароль">
+                            <input name="encryption" value="WEP" type="hidden">
+                        </div>
+                        <div class="fields__field" data-qr="wifi" data-field="8">
+                            <input name="wifiName" type="text" placeholder="Имя сети (SSID)">
+                            <input name="password" type="text" placeholder="Пароль">
+                            <input name="encryption" value="WPA" type="hidden">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="options">
+                <div class="options__panel">
+                    <div class="options__color">
+                        <div class="options__title">Цвет</div>
+                        <div class="options__front">
+                            <div>QR код</div>
+                            <input id="color-input_1" type="text" value="#000000">
+                        </div>
+                        <div class="options__back">
+                            <div>Фон</div>
+                            <input id="color-input_2" type="text" value="#FFFFFF">
+                        </div>
+                    </div>
+                    <div class="options__scale">
+                        <div class="options__title">Размер</div>
+                        <div class="radio radio_cheked" data-scale="200">
+                            <div class="radio__btn">
+                                <div class="radio__point"></div>
+                            </div>
+                            <span>Маленький</span>
+                        </div>
+                        <div class="radio" data-scale="400">
+                            <div class="radio__btn">
+                                <div class="radio__point"></div>
+                            </div>
+                            <span>Средний</span>
+                        </div>
+                        <div class="radio" data-scale="600">
+                            <div class="radio__btn">
+                                <div class="radio__point"></div>
+                            </div>
+                            <span>Большой</span>
+                        </div>
+                    </div>
+                    <div class="options__damage">
+                        <div class="options__title">Уровень коррекции</div>
+                        <div class="radio" data-damage="L">
+                            <div class="radio__btn">
+                                <div class="radio__point"></div>
+                            </div>
+                            <span>Низкий</span>
+                        </div>
+                        <div class="radio" data-damage="M">
+                            <div class="radio__btn">
+                                <div class="radio__point"></div>
+                            </div>
+                            <span>Средний</span>
+                        </div>
+                        <div class="radio" data-damage="Q">
+                            <div class="radio__btn">
+                                <div class="radio__point"></div>
+                            </div>
+                            <span>Высокий</span>
+                        </div>
+                        <div class="radio radio_cheked" data-damage="H">
+                            <div class="radio__btn">
+                                <div class="radio__point"></div>
+                            </div>
+                            <span>Максимальный</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="options__btn">
+                    <div class="options__img">
+                        <img src="/icons/gear-option.png" alt="">
+                    </div>
+                    <div class="options__text">Открыть опции</div>
+                </div>
+            </div>
+            <div class="create">Создать</div>
+        </div>
+    </div>
+
+
+
+    <script src="/js/modules/qrious.js"></script>
+    <script src="/js/modules/color-picker.min.js"></script>
+    <script src="/js/index.js"></script>
+</body>
+
+</html>
