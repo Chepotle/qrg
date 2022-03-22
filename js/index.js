@@ -6,8 +6,6 @@ const types = document.querySelectorAll('.fields__type');
 const fields = document.querySelectorAll('.fields__field');
 const fieldWifi = document.querySelector('.fields__wifi');
 
-
-
 for (let i = 0; i < dropBtns.length; i++) {
     let btn = dropBtns[i];
     let list = dropLists[i];
@@ -52,9 +50,7 @@ document.addEventListener('click', function (e) {
 
 
 const scaleLabels = document.querySelectorAll('[data-scale]');
-// const scaleRadios = document.querySelectorAll('[data-scale] .radio__point');
 const damageLabels = document.querySelectorAll('[data-damage]');
-// const damageRadios = document.querySelectorAll('[data-damage] .radio__point');
 
 const optionsBtn = document.querySelector('.options__btn');
 const optionsText = document.querySelector('.options__text');
@@ -82,12 +78,12 @@ for (let i = 0; i < damageLabels.length; i++) {
 }
 
 optionsBtn.addEventListener('click', function (e) {
-    if (optionsText.textContent == 'Открыть опции') {
-        optionsPanel.style.display = 'flex';
+    if (!optionsPanel.classList.contains('options__panel_open')) {
+        optionsPanel.classList.add('options__panel_open');
         optionsText.textContent = 'Закрыть опции';
     } else {
-        optionsText.textContent = 'Открыть опции'
-        optionsPanel.style.display = 'none';
+        optionsText.textContent = 'Открыть опции';
+        optionsPanel.classList.remove('options__panel_open');
     }
 })
 
@@ -119,10 +115,16 @@ const submit = document.querySelector('.create');
 const scaleOptions = document.querySelector('.options__scale');
 const damageOptions = document.querySelector('.options__damage');
 const modal = document.querySelector('.modal');
-let scale = 200;
-let damage = 'H';
+
+let scale = '&size=200x200';
+let damage = '&ecc=H';
 let data = '';
 
+modal.addEventListener('click', function (e) {
+    if (e.target != document.querySelector('.modal__qr') && e.target != qrPlace) {
+        this.style.display = 'none'
+    }
+})
 
 const inputs = document.querySelectorAll('.fields__field > input, .fields__field > textarea');
 
@@ -134,13 +136,13 @@ for (let i = 0; i < inputs.length; i++) {
         let val = e.target.value;
 
         switch (type) {
-            case 'tel': data = `tel:${val}`;
+            case 'tel': data = 'data=' + `tel:${val}`;
                 break;
-            case 'email': data = `mailto:${val}`;
+            case 'email': data = 'data=' + `mailto:${val}`;
                 break;
-            case 'text': data = `${val}`;
+            case 'text': data = 'data=' + val;
                 break;
-            case 'url': data = `https://${val}`;
+            case 'url': data = 'data=' + val;
                 break;
             case 'wifi':
                 let encryption = e.target.closest('.fields__field').querySelector('[name="encryption"]').value;
@@ -148,9 +150,9 @@ for (let i = 0; i < inputs.length; i++) {
                 let wifiPass = e.target.closest('.fields__field').querySelector('[name="password"]');
 
                 if (wifiPass == null) {
-                    data = `WIFI:T:${encryption};S:${wifiName};;`;
+                    data = 'data=' + `WIFI:T:${encryption};S:${wifiName};;`;
                 } else {
-                    data = `WIFI:T:${encryption};S:${wifiName};P:${wifiPass.value};;`;
+                    data = 'data=' + `WIFI:T:${encryption};S:${wifiName};P:${wifiPass.value};;`;
                 }
                 break;
         }
@@ -165,21 +167,23 @@ damageOptions.addEventListener('click', function () {
     damage = document.querySelector('[data-damage].radio_cheked').getAttribute('data-damage');
 })
 
+let qrPlace = document.querySelector('.modal__qr img');
+let url = 'https://api.qrserver.com/v1/create-qr-code/?'
+
+
 
 submit.addEventListener('click', function () {
     if (data) {
-        modal.style.display = 'flex'
+        let color = '&color=' + huebQR.color.replace(/#/, '');
+        let bgColor = '&bgcolor=' + huebBG.color.replace(/#/, '');
 
-        let qr = new QRious({
-            element: document.querySelector('canvas')
-        });
-
-        qr.background = huebBG.color;
-        qr.foreground = huebQR.color;
-        qr.level = damage;
-        // qr.padding = 20;
-        qr.size = scale;
-        qr.value = data;
+        async function getQR() {
+            const response = await fetch(url + data + scale + color + bgColor + damage);
+            const dataQR = await response.blob();
+            qrPlace.src = URL.createObjectURL(dataQR);
+        }
+        modal.style.display = 'flex';
+        getQR();
     }
 });
 

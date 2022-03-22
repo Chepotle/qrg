@@ -11,6 +11,11 @@
 
 <body>
     <div class="container">
+        <div class="modal">
+            <div class="modal__qr">
+                <img src="" alt="">
+            </div>
+        </div>
         <h1 class="title">Создать QR код</h1>
         <div class="box">
             <div class="box__title">Параметры QR кода</div>
@@ -75,6 +80,12 @@
                 </div>
             </div>
             <div class="options">
+                <div class="options__btn">
+                    <div class="options__img">
+                        <img src="/icons/gear-option.png" alt="">
+                    </div>
+                    <div class="options__text">Открыть опции</div>
+                </div>
                 <div class="options__panel">
                     <div class="options__color">
                         <div class="options__title">Цвет</div>
@@ -89,19 +100,19 @@
                     </div>
                     <div class="options__scale">
                         <div class="options__title">Размер</div>
-                        <div class="radio radio_cheked" data-scale="200">
+                        <div class="radio radio_cheked" data-scale="&size=200x200">
                             <div class="radio__btn">
                                 <div class="radio__point"></div>
                             </div>
                             <span>Маленький</span>
                         </div>
-                        <div class="radio" data-scale="400">
+                        <div class="radio" data-scale="&size=400x400">
                             <div class="radio__btn">
                                 <div class="radio__point"></div>
                             </div>
                             <span>Средний</span>
                         </div>
-                        <div class="radio" data-scale="600">
+                        <div class="radio" data-scale="&size=600x600">
                             <div class="radio__btn">
                                 <div class="radio__point"></div>
                             </div>
@@ -110,25 +121,25 @@
                     </div>
                     <div class="options__damage">
                         <div class="options__title">Уровень коррекции</div>
-                        <div class="radio" data-damage="L">
+                        <div class="radio" data-damage="&ecc=L">
                             <div class="radio__btn">
                                 <div class="radio__point"></div>
                             </div>
                             <span>Низкий</span>
                         </div>
-                        <div class="radio" data-damage="M">
+                        <div class="radio" data-damage="&ecc=M">
                             <div class="radio__btn">
                                 <div class="radio__point"></div>
                             </div>
                             <span>Средний</span>
                         </div>
-                        <div class="radio" data-damage="Q">
+                        <div class="radio" data-damage="&ecc=Q">
                             <div class="radio__btn">
                                 <div class="radio__point"></div>
                             </div>
                             <span>Высокий</span>
                         </div>
-                        <div class="radio radio_cheked" data-damage="H">
+                        <div class="radio radio_cheked" data-damage="&ecc=H">
                             <div class="radio__btn">
                                 <div class="radio__point"></div>
                             </div>
@@ -136,20 +147,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="options__btn">
-                    <div class="options__img">
-                        <img src="/icons/gear-option.png" alt="">
-                    </div>
-                    <div class="options__text">Открыть опции</div>
-                </div>
             </div>
             <div class="create">Создать</div>
         </div>
     </div>
 
 
-
-    <script src="/js/modules/qrious.js"></script>
     <script src="/js/modules/color-picker.min.js"></script>
     <script src="/js/index.js"></script>
 </body>
