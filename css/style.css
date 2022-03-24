@@ -1,4 +1,5 @@
 @charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Fredoka&display=swap");
 /*Обнуление*/
 * {
   padding: 0;
@@ -24,8 +25,6 @@ nav, footer, header, aside {
 }
 
 html, body {
-  height: 100%;
-  width: 100%;
   font-size: 100%;
   line-height: 1;
   font-size: 14px;
@@ -166,10 +165,16 @@ https://huebee.buzz
   stroke: #222;
 }
 
+body {
+  font-family: 'Fredoka', sans-serif;
+  position: relative;
+}
+
 .container {
   max-width: 1200px;
   width: 100%;
   margin: 0 auto;
+  padding: 0 20px 10px;
 }
 
 .title {
@@ -180,7 +185,7 @@ https://huebee.buzz
 
 .box {
   position: relative;
-  margin: 0 auto 0 auto;
+  margin: 0 auto 15px auto;
   max-width: 450px;
   width: 100%;
   min-height: 400px;
@@ -205,6 +210,7 @@ https://huebee.buzz
 
 .fields input, .fields textarea {
   padding: 10px 20px;
+  font-size: 24px;
   width: 100%;
   height: 50px;
   border-radius: 10px;
@@ -224,6 +230,10 @@ https://huebee.buzz
   color: #fff;
   padding: 10px 20px;
   border-radius: 20px;
+}
+
+.fields__type span {
+  margin-right: 25px;
 }
 
 .fields__drop {
@@ -304,7 +314,7 @@ https://huebee.buzz
 
 .options input {
   height: 20px;
-  width: 100%;
+  width: 74px;
   padding: 5px;
 }
 
@@ -339,6 +349,7 @@ https://huebee.buzz
   font-size: 16px;
   cursor: pointer;
   margin-bottom: 35px;
+  font-weight: 600;
 }
 
 .options__img {
@@ -352,6 +363,7 @@ https://huebee.buzz
 
 .options__title {
   margin-bottom: 20px;
+  font-weight: 600;
 }
 
 .options__front {
@@ -364,6 +376,14 @@ https://huebee.buzz
 
 .options__color {
   width: 20%;
+}
+
+.options__scale {
+  width: 27%;
+}
+
+.options__damage {
+  width: 40%;
 }
 
 .options__back div {
@@ -423,6 +443,7 @@ https://huebee.buzz
 }
 
 .create {
+  font-weight: 600;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -448,6 +469,7 @@ https://huebee.buzz
 
 .modal {
   width: 100%;
+  min-height: 100vh;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.85);
   position: absolute;
@@ -461,12 +483,32 @@ https://huebee.buzz
       -ms-flex-pack: center;
           justify-content: center;
   display: none;
-}
-
-body {
-  position: relative;
+  overflow-x: auto;
 }
 
 [name="password"] {
   margin-top: 15px;
+}
+
+@media (max-width: 575.98px) {
+  .options__panel {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .options__color {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  .options__damage {
+    width: 100%;
+  }
+  .options__scale {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  .options__panel_open {
+    height: 396px;
+  }
 }

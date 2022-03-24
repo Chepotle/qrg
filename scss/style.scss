@@ -1,10 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka&display=swap');
 @import "_reset";
 @import "_color-picker";
+
+body {
+    font-family: 'Fredoka', sans-serif;
+    position: relative;
+}
 
 .container {
     max-width: 1200px;
     width: 100%;
     margin: 0 auto;
+    padding: 0 20px 10px;
 }
 
 .title {
@@ -15,7 +22,7 @@
 
 .box {
     position: relative;
-    margin: 0 auto 0 auto;
+    margin: 0 auto 15px auto;
     max-width: 450px;
     width: 100%;
     min-height: 400px;
@@ -37,6 +44,7 @@
     width: 100%;
     input, textarea {
         padding: 10px 20px;
+        font-size: 24px;
         width: 100%;
         height: 50px;
         border-radius: 10px;
@@ -54,6 +62,9 @@
         color: #fff;
         padding: 10px 20px;
         border-radius: 20px;
+        span {
+            margin-right: 25px;
+        }
     }
     &__drop {
         background-color: #fff;
@@ -123,7 +134,7 @@
     margin-top: 25px;
     input {
         height: 20px;
-        width: 100%;
+        width: 74px;
         padding: 5px;
     }
     &__panel {
@@ -140,13 +151,14 @@
             height: 151px;
             overflow: visible;
         }
-}
+    }
     &__btn {
         display: inline-flex;
         align-items: center;
         font-size: 16px;
         cursor: pointer;
         margin-bottom: 35px;
+        font-weight: 600;
     }
     &__img {
         margin-right: 10px;
@@ -157,6 +169,7 @@
     }
     &__title {
         margin-bottom: 20px;
+        font-weight: 600;
     }
     &__front {
         margin-bottom: 15px;
@@ -166,6 +179,12 @@
     }
     &__color {
         width: 20%;
+    }
+    &__scale {
+        width: 27%;
+    }
+    &__damage {
+        width: 40%;
     }
     &__back {
         div {
@@ -220,6 +239,7 @@
 }
 
 .create {
+    font-weight: 600;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -239,6 +259,7 @@
 
 .modal {
     width: 100%;
+    min-height: 100vh;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.85);
     position: absolute;
@@ -248,13 +269,34 @@
     align-items: center;
     justify-content: center;
     display: none;
-}
-
-body {
-    position: relative;
+    overflow-x: auto;
 }
 
 [name="password"] {
     margin-top: 15px;
 }
 
+@media (max-width: 575.98px) {
+    .options__panel {
+        flex-direction: column;
+    }
+
+    .options__color {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .options__damage {
+        width: 100%;
+    }
+
+    .options__scale {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .options__panel_open {
+        height: 396px;
+    }
+
+}

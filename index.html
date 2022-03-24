@@ -21,7 +21,9 @@
             <div class="box__title">Параметры QR кода</div>
             <div class="fields">
                 <div class="fields__select">
-                    <div class="fields__type">Выберите тип QR кода</div>
+                    <div class="fields__type">
+                        <span>Выберите тип QR кода</span>
+                    </div>
                     <div class="fields__btn">
                         <img src="./icons/up-arrow.png" alt="">
                     </div>
@@ -36,16 +38,16 @@
                     </div>
                 </div>
                 <div class="fields__field" data-qr="text" data-field="1">
-                    <textarea placeholder="Введите текст"></textarea>
+                    <textarea class="qr-data" placeholder="Введите текст"></textarea>
                 </div>
                 <div class="fields__field" data-qr="url" data-field="2">
-                    <input type="text" placeholder="Введите ссылку">
+                    <input class="qr-data" type="text" placeholder="Введите ссылку">
                 </div>
                 <div class="fields__field" data-qr="tel" data-field="3">
-                    <input type="text" placeholder="Введите телефон">
+                    <input class="qr-data" type="text" placeholder="Введите телефон">
                 </div>
                 <div class="fields__field" data-qr="email" data-field="4">
-                    <input type="text" placeholder="Введите эл. почту">
+                    <input class="qr-data" type="text" placeholder="Введите эл. почту">
                 </div>
                 <div class="fields__field" data-field="5">
                     <div class="fields">
@@ -63,17 +65,17 @@
                             </div>
                         </div>
                         <div class="fields__field" data-qr="wifi" data-field="6">
-                            <input name="wifiName" type="text" placeholder="Имя сети (SSID)">
+                            <input class="qr-data" name="wifiName" type="text" placeholder="Имя сети (SSID)">
                             <input name="encryption" value="nopass" type="hidden">
                         </div>
                         <div class="fields__field" data-qr="wifi" data-field="7">
-                            <input name="wifiName" type="text" placeholder="Имя сети (SSID)">
-                            <input name="password" type="text" placeholder="Пароль">
+                            <input class="qr-data" name="wifiName" type="text" placeholder="Имя сети (SSID)">
+                            <input class="qr-data" name="password" type="text" placeholder="Пароль">
                             <input name="encryption" value="WEP" type="hidden">
                         </div>
                         <div class="fields__field" data-qr="wifi" data-field="8">
-                            <input name="wifiName" type="text" placeholder="Имя сети (SSID)">
-                            <input name="password" type="text" placeholder="Пароль">
+                            <input class="qr-data" name="wifiName" type="text" placeholder="Имя сети (SSID)">
+                            <input class="qr-data" name="password" type="text" placeholder="Пароль">
                             <input name="encryption" value="WPA" type="hidden">
                         </div>
                     </div>
@@ -100,19 +102,19 @@
                     </div>
                     <div class="options__scale">
                         <div class="options__title">Размер</div>
-                        <div class="radio radio_cheked" data-scale="&size=200x200">
+                        <div id="small" class="radio radio_cheked" data-scale="&size=200x200">
                             <div class="radio__btn">
                                 <div class="radio__point"></div>
                             </div>
                             <span>Маленький</span>
                         </div>
-                        <div class="radio" data-scale="&size=400x400">
+                        <div id="medium" class="radio" data-scale="&size=400x400">
                             <div class="radio__btn">
                                 <div class="radio__point"></div>
                             </div>
                             <span>Средний</span>
                         </div>
-                        <div class="radio" data-scale="&size=600x600">
+                        <div id="big" class="radio" data-scale="&size=600x600">
                             <div class="radio__btn">
                                 <div class="radio__point"></div>
                             </div>

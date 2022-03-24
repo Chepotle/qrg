@@ -1,10 +1,28 @@
 'use strict'
 
+const screenWidth = window.screen.width;
+const smallSize = document.querySelector('#small');
+const mediumSize = document.querySelector('#medium');
+const bigSize = document.querySelector('#big');
+
+let scale = '&size=200x200';
+let damage = '&ecc=H';
+let data = '';
+
+if (screenWidth < 576) {
+    scale = '&size=100x100';
+    smallSize.setAttribute('data-scale', '&size=100x100');
+    mediumSize.setAttribute('data-scale', '&size=200x200');
+    bigSize.setAttribute('data-scale', '&size=300x300');
+}
+
 const dropBtns = document.querySelectorAll('.fields__btn');
 const dropLists = document.querySelectorAll('.fields__drop');
 const types = document.querySelectorAll('.fields__type');
 const fields = document.querySelectorAll('.fields__field');
 const fieldWifi = document.querySelector('.fields__wifi');
+const inputs = document.querySelectorAll('.fields__field > input, .fields__field > textarea');
+
 
 for (let i = 0; i < dropBtns.length; i++) {
     let btn = dropBtns[i];
@@ -30,11 +48,14 @@ for (let i = 0; i < dropBtns.length; i++) {
                 return true
             } return false
         });
-        type.textContent = e.target.textContent;
-        let option = e.target.getAttribute('data-option');
-        let field = document.querySelector(`[data-field='${option}']`);
-        fieldsContainer.forEach(i => i.style.display = 'none');
-        field.style.display = 'block';
+        if (e.target.tagName == "LI") {
+            inputs.forEach(i => i.value = '');
+            type.textContent = e.target.textContent;
+            let option = e.target.getAttribute('data-option');
+            let field = document.querySelector(`[data-field='${option}']`);
+            fieldsContainer.forEach(i => i.style.display = 'none');
+            field.style.display = 'block';
+        }
     })
 }
 
@@ -116,17 +137,11 @@ const scaleOptions = document.querySelector('.options__scale');
 const damageOptions = document.querySelector('.options__damage');
 const modal = document.querySelector('.modal');
 
-let scale = '&size=200x200';
-let damage = '&ecc=H';
-let data = '';
-
 modal.addEventListener('click', function (e) {
     if (e.target != document.querySelector('.modal__qr') && e.target != qrPlace) {
         this.style.display = 'none'
     }
 })
-
-const inputs = document.querySelectorAll('.fields__field > input, .fields__field > textarea');
 
 for (let i = 0; i < inputs.length; i++) {
     let input = inputs[i];
@@ -178,7 +193,7 @@ submit.addEventListener('click', function () {
         let bgColor = '&bgcolor=' + huebBG.color.replace(/#/, '');
 
         async function getQR() {
-            const response = await fetch(url + data + scale + color + bgColor + damage);
+            const response = await fetch(url + data + scale + color + bgColor + damage + '&qzone=1');
             const dataQR = await response.blob();
             qrPlace.src = URL.createObjectURL(dataQR);
         }
