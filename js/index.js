@@ -21,7 +21,7 @@ const dropLists = document.querySelectorAll('.fields__drop');
 const types = document.querySelectorAll('.fields__type');
 const fields = document.querySelectorAll('.fields__field');
 const fieldWifi = document.querySelector('.fields__wifi');
-const inputs = document.querySelectorAll('.fields__field > input, .fields__field > textarea');
+const inputs = document.querySelectorAll('.qr-data');
 
 
 for (let i = 0; i < dropBtns.length; i++) {
@@ -50,6 +50,7 @@ for (let i = 0; i < dropBtns.length; i++) {
         });
         if (e.target.tagName == "LI") {
             inputs.forEach(i => i.value = '');
+            data = '';
             type.textContent = e.target.textContent;
             let option = e.target.getAttribute('data-option');
             let field = document.querySelector(`[data-field='${option}']`);
@@ -108,7 +109,6 @@ optionsBtn.addEventListener('click', function (e) {
     }
 })
 
-
 // color-picker
 
 const colorFront = document.getElementById('color-input_1');
@@ -150,26 +150,30 @@ for (let i = 0; i < inputs.length; i++) {
         let type = e.target.closest('.fields__field').getAttribute('data-qr');
         let val = e.target.value;
 
-        switch (type) {
-            case 'tel': data = 'data=' + `tel:${val}`;
-                break;
-            case 'email': data = 'data=' + `mailto:${val}`;
-                break;
-            case 'text': data = 'data=' + val;
-                break;
-            case 'url': data = 'data=' + val;
-                break;
-            case 'wifi':
-                let encryption = e.target.closest('.fields__field').querySelector('[name="encryption"]').value;
-                let wifiName = e.target.closest('.fields__field').querySelector('[name="wifiName"]').value;
-                let wifiPass = e.target.closest('.fields__field').querySelector('[name="password"]');
+        if (val) {
+            switch (type) {
+                case 'tel': data = 'data=' + `tel:${val}`;
+                    break;
+                case 'email': data = 'data=' + `mailto:${val}`;
+                    break;
+                case 'text': data = 'data=' + val;
+                    break;
+                case 'url': data = 'data=' + val;
+                    break;
+                case 'wifi':
+                    let encryption = e.target.closest('.fields__field').querySelector('[name="encryption"]').value;
+                    let wifiName = e.target.closest('.fields__field').querySelector('[name="wifiName"]').value;
+                    let wifiPass = e.target.closest('.fields__field').querySelector('[name="password"]');
 
-                if (wifiPass == null) {
-                    data = 'data=' + `WIFI:T:${encryption};S:${wifiName};;`;
-                } else {
-                    data = 'data=' + `WIFI:T:${encryption};S:${wifiName};P:${wifiPass.value};;`;
-                }
-                break;
+                    if (wifiPass == null) {
+                        data = 'data=' + `WIFI:T:${encryption};S:${wifiName};;`;
+                    } else {
+                        data = 'data=' + `WIFI:T:${encryption};S:${wifiName};P:${wifiPass.value};;`;
+                    }
+                    break;
+            }
+        } else {
+            data = '';
         }
     })
 }
@@ -188,6 +192,7 @@ let url = 'https://api.qrserver.com/v1/create-qr-code/?'
 
 
 submit.addEventListener('click', function () {
+
     if (data) {
         let color = '&color=' + huebQR.color.replace(/#/, '');
         let bgColor = '&bgcolor=' + huebBG.color.replace(/#/, '');

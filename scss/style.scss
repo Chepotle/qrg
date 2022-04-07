@@ -33,6 +33,7 @@ body {
     -moz-border-radius: 20px;
     -ms-border-radius: 20px;
     -o-border-radius: 20px;
+
     &__title {
         font-size: 20px;
         margin-bottom: 25px;
@@ -42,7 +43,9 @@ body {
 
 .fields {
     width: 100%;
-    input, textarea {
+
+    input,
+    textarea {
         padding: 10px 20px;
         font-size: 24px;
         width: 100%;
@@ -53,19 +56,23 @@ body {
         -ms-border-radius: 10px;
         -o-border-radius: 10px;
     }
+
     textarea {
         height: 80px;
     }
+
     &__type {
         font-size: 28px;
         background-color: #008cff;
         color: #fff;
         padding: 10px 20px;
         border-radius: 20px;
+
         span {
             margin-right: 25px;
         }
     }
+
     &__drop {
         background-color: #fff;
         display: none;
@@ -76,25 +83,30 @@ body {
         z-index: 10;
         transform: translateX(-50%);
         border-radius: 5px;
+
         li {
             font-size: 18px;
         }
     }
+
     &__select {
         position: relative;
         margin-bottom: 25px;
     }
+
     &__list {
         li {
             padding: 10px 20px;
             font-size: 16px;
             cursor: pointer;
+
             &:hover {
                 background-color: #ffff9e;
                 border-radius: 5px;
             }
         }
     }
+
     &__btn {
         position: absolute;
         right: 20px;
@@ -104,21 +116,26 @@ body {
         height: 18px;
         width: 18px;
     }
+
     img {
-            height: 18px;
-            width: 18px;
+        height: 18px;
+        width: 18px;
     }
+
     &__field {
         font-size: 24px;
         display: none;
+
         textarea {
             resize: none;
             font-size: 24px;
         }
     }
+
     &__wifi {
         display: none;
     }
+
     &__wifi-name {
         margin-bottom: 20px;
     }
@@ -132,11 +149,13 @@ body {
 
 .options {
     margin-top: 25px;
+
     input {
         height: 20px;
         width: 74px;
         padding: 5px;
     }
+
     &__panel {
         display: flex;
         justify-content: space-between;
@@ -147,11 +166,13 @@ body {
         -o-transition: .3s;
         height: 0;
         overflow: hidden;
+
         &_open {
             height: 151px;
             overflow: visible;
         }
     }
+
     &__btn {
         display: inline-flex;
         align-items: center;
@@ -160,32 +181,41 @@ body {
         margin-bottom: 35px;
         font-weight: 600;
     }
+
     &__img {
         margin-right: 10px;
+
         img {
             width: 16px;
             height: 16px;
         }
     }
+
     &__title {
         margin-bottom: 20px;
         font-weight: 600;
     }
+
     &__front {
         margin-bottom: 15px;
+
         div {
             margin-bottom: 5px;
         }
     }
+
     &__color {
         width: 20%;
     }
+
     &__scale {
         width: 27%;
     }
+
     &__damage {
         width: 40%;
     }
+
     &__back {
         div {
             margin-bottom: 5px;
@@ -198,9 +228,11 @@ body {
     display: flex;
     align-items: center;
     cursor: pointer;
+
     &:last-child {
         margin-bottom: 0;
     }
+
     &__btn {
         width: 18px;
         height: 18px;
@@ -213,6 +245,7 @@ body {
         margin-right: 7px;
         position: relative;
     }
+
     &__point {
         position: absolute;
         width: 10px;
@@ -255,6 +288,10 @@ body {
     -moz-border-radius: 10px;
     -ms-border-radius: 10px;
     -o-border-radius: 10px;
+}
+
+.empty {
+    border: 2px solid rgb(187, 39, 39);
 }
 
 .modal {
